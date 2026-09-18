@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KALSTONE STUDIO | Ideas Into Impact</title>
+    <meta name="description" content="KALSTONE STUDIO is a modern creative studio from Papua New Guinea providing premium branding, design, and digital experiences for global clients.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        orange: {
+                            400: '#fb923c',
+                            500: '#f97316',
+                            600: '#ea580c',
+                        },
+                        zinc: {
+                            800: '#27272a',
+                            900: '#18181b',
+                            950: '#09090b',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom CSS -->
+    <style>
+        body {
+            background-color: #09090b;
+            color: #ffffff;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Scroll Reveal Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Delay utility classes */
+        .delay-100 { transition-delay: 100ms; }
+        .delay-200 { transition-delay: 200ms; }
+        .delay-300 { transition-delay: 300ms; }
+        .delay-400 { transition-delay: 400ms; }
+
+        /* SPA Page Hiding */
+        .page-section {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.4s ease-in-out;
+        }
+        .page-section.active {
+            display: block;
+            opacity: 1;
+        }
+
+        /* Slider Custom Cursor */
+        .slider-container {
+            cursor: ew-resize;
+        }
+    </style>
+</head>
+<body class="selection:bg-orange-500 selection:text-white">
+
+    <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300 bg-transparent py-6">
+        <div class="max-w-7xl mx-auto px-6 flex items-center justify-between">
+            <div class="text-xl font-black tracking-tighter cursor-pointer flex items-center gap-2 group" onclick="navigate('home')">
+                <span class="w-6 h-6 bg-orange-500 rounded-sm block group-hover:rotate-12 transition-transform"></span>
+                KALSTONE<span class="text-zinc-500 font-light">STUDIO</span>
+            </div>
+
+            <!-- Desktop Nav -->
+            <div class="hidden md:flex items-center gap-8">
+                <div class="flex gap-6" id="nav-links">
+                    <button onclick="navigate('home')" class="nav-btn text-orange-500 text-sm font-medium tracking-wide transition-colors hover:text-white" data-target="home">Home</button>
+                    <button onclick="navigate('work')" class="nav-btn text-zinc-400 text-sm font-medium tracking-wide transition-colors hover:text-white" data-target="work">Work</button>
+                    <button onclick="navigate('services')" class="nav-btn text-zinc-400 text-sm font-medium tracking-wide transition-colors hover:text-white" data-target="services">Services</button>
+                    <button onclick="navigate('about')" class="nav-btn text-zinc-400 text-sm font-medium tracking-wide transition-colors hover:text-white" data-target="about">About</button>
+                </div>
+                <button onclick="navigate('contact')" class="bg-white text-black px-6 py-2.5 rounded-full text-sm font-bold hover:bg-orange-500 hover:text-white transition-colors">
+                    START A PROJECT
+                </button>
+            </div>
+
+            <!-- Mobile Toggle -->
+            <button class="md:hidden text-white text-2xl" id="mobile-menu-btn" onclick="toggleMobileMenu()">
+                <i class="ph ph-list"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 z-40 bg-zinc-950 flex-col justify-center items-center px-6 pt-20 pb-10 hidden opacity-0 transition-opacity duration-300">
+        <div class="flex flex-col items-center gap-8 w-full">
+            <button onclick="navigate('home')" class="mob-nav-btn text-3xl font-bold tracking-tight text-orange-500 transition-colors" data-target="home">Home</button>
+            <button onclick="navigate('work')" class="mob-nav-btn text-3xl font-bold tracking-tight text-white transition-colors" data-target="work">Work</button>
+            <button onclick="navigate('services')" class="mob-nav-btn text-3xl font-bold tracking-tight text-white transition-colors" data-target="services">Services</button>
+            <button onclick="navigate('about')" class="mob-nav-btn text-3xl font-bold tracking-tight text-white transition-colors" data-target="about">About</button>
+            <button onclick="navigate('contact')" class="mt-8 bg-orange-500 text-white w-full py-4 rounded-xl text-lg font-bold">
+                START A PROJECT
+            </button>
+        </div>
+    </div>
+
+    <main id="main-content">
+        <!-- ================= HOME PAGE ================= -->
+        <div id="page-home" class="page-section active">
+            <!-- Hero Section -->
+            <section class="relative min-h-screen flex items-center pt-20 overflow-hidden">
+                <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-orange-600/20 rounded-full blur-[120px] mix-blend-screen pointer-events-none"></div>
+                <div class="absolute bottom-1/4 right-1/4 w-[30rem] h-[30rem] bg-zinc-800/30 rounded-full blur-[100px] pointer-events-none"></div>
+                
+                <div class="max-w-7xl mx-auto px-6 relative z-10 w-full">
+                    <div class="reveal delay-100 inline-block px-4 py-1.5 rounded-full border border-zinc-800 bg-zinc-900/50 backdrop-blur-sm text-xs font-bold tracking-widest text-zinc-400 uppercase mb-8">
+                        Creative Studio • Papua New Guinea • Global Clients
+                    </div>
+                    <h1 class="reveal delay-200 text-5xl md:text-7xl lg:text-9xl font-black tracking-tighter leading-[0.9] mb-6">
+                        IDEAS <br/> 
+                        INTO <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600">IMPACT.</span>
+                    </h1>
+                    <p class="reveal delay-300 text-lg md:text-2xl text-zinc-400 max-w-2xl font-light leading-relaxed mb-10">
+                        We create bold brands, engaging content and powerful visual experiences for businesses ready to stand out.
+                    </p>
+                    <div class="reveal delay-400 flex flex-col sm:flex-row gap-4">
+                        <button onclick="navigate('contact')" class="bg-white text-black px-8 py-4 rounded-full text-sm font-bold hover:bg-orange-500 hover:text-white transition-all flex items-center justify-center gap-2 group">
+                            START A PROJECT <i class="ph ph-arrow-right text-lg group-hover:translate-x-1 transition-transform"></i>
+                        </button>
+                        <button onclick="navigate('work')" class="bg-transparent border border-zinc-800 text-white px-8 py-4 rounded-full text-sm font-bold hover:border-zinc-500 transition-all flex items-center justify-center">
+                            VIEW OUR WORK
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Featured Work -->
+            <section class="py-24 bg-zinc-950">
+                <div class="max-w-7xl mx-auto px-6">
+                    <div class="reveal flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+                        <div>
+                            <h2 class="text-4xl md:text-5xl font-bold tracking-tight mb-4">SELECTED WORK</h2>
+                            <p class="text-zinc-400 text-lg max-w-xl">Creative work designed to make brands impossible to ignore.</p>
+                        </div>
+                        <button onclick="navigate('work')" class="text-orange-500 hover:text-white font-bold flex items-center gap-2 transition-colors">
+                            VIEW ALL PROJECTS <i class="ph ph-arrow-right"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <!-- Project 1 -->
+                        <div class="reveal group cursor-pointer block" onclick="loadProjectDetail('highlands-coffee')">
+                            <div class="relative overflow-hidden rounded-2xl aspect-[4/3] mb-6 bg-zinc-900">
+                                <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&q=80&w=1200" alt="Highlands Coffee" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"/>
+                                <div class="absolute top-4 right-4 bg-black/60 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold tracking-wide border border-white/10">Concept Project</div>
+                            </div>
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <p class="text-orange-500 text-sm font-bold mb-2 uppercase">Brand Identity</p>
+                                    <h3 class="text-2xl font-bold group-hover:text-orange-400 transition-colors">Highlands Coffee Roasters</h3>
+                                </div>
+                                <div class="w-10 h-10 rounded-full bg-zinc-900 border border-zinc-800 flex items-center justify-center group-hover:bg-orange-500 group-hover:border-orange-500 group-hover:text-white transition-all text-xl">
+                                    <i class="ph ph-arrow-up-right"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Project 2 -->
+                        <div class="reveal delay-100 group cursor-pointer block" onclick="loadProjectDetail('coastal-traders')">
+                            <div class="relative overflow-hidden rounded-2xl aspect-[4/3] mb-6 bg-zinc-900">
+                                <img src="https://images.unsplash.com/photo-1553531384-cc64ac80f931?auto=format&fit=crop&q=80&w=1200" alt="Coastal Traders" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"/>
+                                <div class="absolute top-4 right-4 bg-black/60 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold tracking-wide border border-white/10">Concept Project</div>
+                            </div>
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <p class="text-orange-500 text-sm font-bold mb-2 uppercase">Branding & Web</p>
+                                    <h3 class="text-2xl font-bold group-hover:text-orange-400 transition-colors">Coastal Traders Co-op</h3>
+                                </div>
+                                <div class="w-10 h-10 rounded-full bg-zinc-900 border border-zinc-800 flex items-center justify-center group-hover:bg-orange-500 group-hover:border-orange-500 group-hover:text-white transition-all text-xl">
+                                    <i class="ph ph-arrow-up-right"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Services Preview -->
+            <section class="py-24 bg-zinc-900 relative border-y border-zinc-800">
+                <div class="max-w-7xl mx-auto px-6">
+                    <h2 class="reveal text-4xl md:text-5xl font-bold tracking-tight mb-16 text-center">CREATIVE SERVICES BUILT FOR GROWTH</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div class="reveal bg-zinc-950 border border-zinc-800 p-8 rounded-2xl hover:border-orange-500/50 transition-colors group cursor-default h-full flex flex-col">
+                            <div class="w-12 h-12 bg-zinc-900 rounded-xl flex items-center justify-center text-orange-500 mb-6 group-hover:scale-110 transition-transform text-2xl"><i class="ph ph-pen-nib"></i></div>
+                            <h3 class="text-xl font-bold mb-3">Brand Identity</h3>
+                            <p class="text-zinc-400 font-light leading-relaxed flex-grow">Logo design, visual identity, color systems, typography and brand guidelines.</p>
+                            <button onclick="navigate('services')" class="mt-6 text-sm font-bold text-zinc-500 group-hover:text-white flex items-center gap-2 transition-colors">Explore Service <i class="ph ph-arrow-right"></i></button>
+                        </div>
+                        <div class="reveal delay-100 bg-zinc-950 border border-zinc-800 p-8 rounded-2xl hover:border-orange-500/50 transition-colors group cursor-default h-full flex flex-col">
+                            <div class="w-12 h-12 bg-zinc-900 rounded-xl flex items-center justify-center text-orange-500 mb-6 group-hover:scale-110 transition-transform text-2xl"><i class="ph ph-camera"></i></div>
+                            <h3 class="text-xl font-bold mb-3">Graphic Design</h3>
+                            <p class="text-zinc-400 font-light leading-relaxed flex-grow">Marketing materials, posters, presentations and digital graphics.</p>
+                            <button onclick="navigate('services')" class="mt-6 text-sm font-bold text-zinc-500 group-hover:text-white flex items-center gap-2 transition-colors">Explore Service <i class="ph ph-arrow-right"></i></button>
+                        </div>
+                        <div class="reveal delay-200 bg-zinc-950 border border-zinc-800 p-8 rounded-2xl hover:border-orange-500/50 transition-colors group cursor-default h-full flex flex-col">
+                            <div class="w-12 h-12 bg-zinc-900 rounded-xl flex items-center justify-center text-orange-500 mb-6 group-hover:scale-110 transition-transform text-2xl"><i class="ph ph-play-circle"></i></div>
+                            <h3 class="text-xl font-bold mb-3">Video & Motion</h3>
+                            <p class="text-zinc-400 font-light leading-relaxed flex-grow">Promotional videos, social media videos, reels, and motion graphics.</p>
+                            <button onclick="navigate('services')" class="mt-6 text-sm font-bold text-zinc-500 group-hover:text-white flex items-center gap-2 transition-colors">Explore Service <i class="ph ph-arrow-right"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Why Kalstone -->
+            <section class="py-32 bg-zinc-950">
+                <div class="max-w-7xl mx-auto px-6">
+                    <h2 class="reveal text-4xl md:text-5xl font-bold tracking-tight mb-16 text-center">WHY KALSTONE?</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16">
+                        <div class="reveal flex gap-6">
+                            <i class="ph-fill ph-check-circle text-orange-500 text-3xl flex-shrink-0 mt-1"></i>
+                            <div>
+                                <h3 class="text-xl font-bold mb-3 tracking-wide">CREATIVE THINKING</h3>
+                                <p class="text-zinc-400 text-lg leading-relaxed">We don't just make designs. We develop creative ideas around your goals.</p>
+                            </div>
+                        </div>
+                        <div class="reveal delay-100 flex gap-6">
+                            <i class="ph-fill ph-check-circle text-orange-500 text-3xl flex-shrink-0 mt-1"></i>
+                            <div>
+                                <h3 class="text-xl font-bold mb-3 tracking-wide">PNG PERSPECTIVE. GLOBAL VISION.</h3>
+                                <p class="text-zinc-400 text-lg leading-relaxed">Built from Papua New Guinea with a vision to showcase PNG creativity to the world.</p>
+                            </div>
+                        </div>
+                        <div class="reveal delay-200 flex gap-6">
+                            <i class="ph-fill ph-check-circle text-orange-500 text-3xl flex-shrink-0 mt-1"></i>
+                            <div>
+                                <h3 class="text-xl font-bold mb-3 tracking-wide">PERSONAL CREATIVE SERVICE</h3>
+                                <p class="text-zinc-400 text-lg leading-relaxed">Work directly with a creative studio focused on understanding your brand.</p>
+                            </div>
+                        </div>
+                        <div class="reveal delay-300 flex gap-6">
+                            <i class="ph-fill ph-check-circle text-orange-500 text-3xl flex-shrink-0 mt-1"></i>
+                            <div>
+                                <h3 class="text-xl font-bold mb-3 tracking-wide">MODERN CREATIVE TECHNOLOGY</h3>
+                                <p class="text-zinc-400 text-lg leading-relaxed">Combining design expertise with modern digital and AI-assisted creative tools.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Before / After Slider -->
+            <section class="w-full max-w-5xl mx-auto my-24 px-6 overflow-hidden">
+                <div class="reveal text-center mb-12">
+                    <h2 class="text-3xl md:text-5xl font-bold tracking-tight mb-4">SEE THE DIFFERENCE</h2>
+                    <p class="text-zinc-400 max-w-2xl mx-auto">Slide to see how professional branding transforms an ordinary visual into a powerful brand asset.</p>
+                </div>
+                
+                <div class="reveal delay-200 slider-container relative w-full aspect-[4/3] md:aspect-video rounded-2xl overflow-hidden bg-zinc-900 border border-zinc-800 select-none" id="ba-container">
+                    <!-- Before Image (Background) -->
+                    <div class="absolute inset-0 pointer-events-none">
+                        <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=1600&grayscale=true" alt="Before Branding" class="w-full h-full object-cover opacity-50 grayscale contrast-50" draggable="false"/>
+                        <div class="absolute top-6 right-6 bg-black/50 backdrop-blur-md px-4 py-2 rounded-full text-xs font-bold tracking-widest text-zinc-300">BEFORE</div>
+                    </div>
+                    
+                    <!-- After Image (Foreground) -->
+                    <div id="ba-foreground" class="absolute inset-0 border-r-2 border-orange-500 shadow-[20px_0_50px_rgba(0,0,0,0.5)] pointer-events-none" style="clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);">
+                        <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=1600" alt="After Branding" class="w-full h-full object-cover" draggable="false"/>
+                        <div class="absolute top-6 left-6 bg-orange-500 text-white px-4 py-2 rounded-full text-xs font-bold tracking-widest">AFTER</div>
+                    </div>
+                    
+                    <!-- Slider Handle -->
+                    <div id="ba-handle" class="absolute top-0 bottom-0 w-1 bg-white flex items-center justify-center pointer-events-none" style="left: 50%; transform: translateX(-50%);">
+                        <div class="w-10 h-10 bg-orange-500 rounded-full flex items-center justify-center shadow-lg text-white text-xl">
+                            <i class="ph ph-sliders-horizontal rotate-90"></i>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Creative Process -->
+            <section class="py-24 bg-zinc-900 border-y border-zinc-800 overflow-hidden">
+                <div class="max-w-7xl mx-auto px-6">
+                    <div class="reveal text-center mb-20">
+                        <h2 class="text-4xl md:text-5xl font-bold tracking-tight mb-4">FROM IDEA TO IMPACT</h2>
+                        <p class="text-zinc-400 max-w-2xl mx-auto">Our streamlined creative process ensures clarity, collaboration, and exceptional results.</p>
+                    </div>
+                    
+                    <div class="relative">
+                        <div class="hidden md:block absolute top-6 left-0 right-0 h-0.5 bg-zinc-800 z-0"></div>
+                        <div class="flex flex-col md:flex-row gap-12 md:gap-6 justify-between relative z-10">
+                            <!-- Step 1 -->
+                            <div class="reveal flex-1 flex flex-col items-center md:items-start text-center md:text-left relative">
+                                <div class="w-12 h-12 rounded-full bg-zinc-950 border-2 border-orange-500 text-orange-500 flex items-center justify-center font-bold text-lg mb-6 shadow-[0_0_15px_rgba(234,88,12,0.3)]">01</div>
+                                <h4 class="text-lg font-bold mb-3">DISCOVER</h4>
+                                <p class="text-sm text-zinc-400 leading-relaxed">Understand the business, audience, goals and requirements.</p>
+                            </div>
+                            <!-- Step 2 -->
+                            <div class="reveal delay-100 flex-1 flex flex-col items-center md:items-start text-center md:text-left relative">
+                                <div class="w-12 h-12 rounded-full bg-zinc-950 border-2 border-orange-500 text-orange-500 flex items-center justify-center font-bold text-lg mb-6 shadow-[0_0_15px_rgba(234,88,12,0.3)]">02</div>
+                                <h4 class="text-lg font-bold mb-3">STRATEGY</h4>
+                                <p class="text-sm text-zinc-400 leading-relaxed">Develop the creative direction and visual approach.</p>
+                            </div>
+                            <!-- Step 3 -->
+                            <div class="reveal delay-200 flex-1 flex flex-col items-center md:items-start text-center md:text-left relative">
+                                <div class="w-12 h-12 rounded-full bg-zinc-950 border-2 border-orange-500 text-orange-500 flex items-center justify-center font-bold text-lg mb-6 shadow-[0_0_15px_rgba(234,88,12,0.3)]">03</div>
+                                <h4 class="text-lg font-bold mb-3">CREATE</h4>
+                                <p class="text-sm text-zinc-400 leading-relaxed">Design the branding, graphics, videos or experience.</p>
+                            </div>
+                            <!-- Step 4 -->
+                            <div class="reveal delay-300 flex-1 flex flex-col items-center md:items-start text-center md:text-left relative">
+                                <div class="w-12 h-12 rounded-full bg-zinc-950 border-2 border-orange-500 text-orange-500 flex items-center justify-center font-bold text-lg mb-6 shadow-[0_0_15px_rgba(234,88,12,0.3)]">04</div>
+                                <h4 class="text-lg font-bold mb-3">REFINE</h4>
+                                <p class="text-sm text-zinc-400 leading-relaxed">Collect feedback and refine the creative work.</p>
+                            </div>
+                            <!-- Step 5 -->
+                            <div class="reveal delay-400 flex-1 flex flex-col items-center md:items-start text-center md:text-left relative">
+                                <div class="w-12 h-12 rounded-full bg-zinc-950 border-2 border-orange-500 text-orange-500 flex items-center justify-center font-bold text-lg mb-6 shadow-[0_0_15px_rgba(234,88,12,0.3)]">05</div>
+                                <h4 class="text-lg font-bold mb-3">DELIVER</h4>
+                                <p class="text-sm text-zinc-400 leading-relaxed">Provide final professional assets ready for use.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Packages -->
+            <section class="py-32 bg-zinc-950">
+                <div class="max-w-7xl mx-auto px-6">
+                    <div class="reveal text-center mb-16">
+                        <h2 class="text-4xl md:text-5xl font-bold tracking-tight mb-4">CREATIVE SOLUTIONS FOR EVERY STAGE</h2>
+                        <p class="text-zinc-400">Transparent packages tailored to your brand's journey.</p>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <!-- Starter -->
+                        <div class="reveal relative p-8 rounded-2xl border flex flex-col h-full bg-zinc-900/50 border-zinc-800">
+                            <h3 class="text-2xl font-bold mb-2">STARTER</h3>
+                            <p class="text-sm text-zinc-400 mb-8">For new businesses.</p>
+                            <div class="mb-8 pb-8 border-b border-zinc-800">
+                                <span class="text-3xl font-light tracking-tight">CUSTOM QUOTE</span>
+                            </div>
+                            <ul class="space-y-4 mb-8 flex-grow">
+                                <li class="flex items-start gap-3 text-sm text-zinc-300"><i class="ph-fill ph-check-circle text-orange-500 text-lg flex-shrink-0"></i> Logo Design</li>
+                                <li class="flex items-start gap-3 text-sm text-zinc-300"><i class="ph-fill ph-check-circle text-orange-500 text-lg flex-shrink-0"></i> Color Palette</li>
+                                <li class="flex items-start gap-3 text-sm text-zinc-300"><i class="ph-fill ph-check-circle text-orange-500 text-lg flex-shrink-0"></i> Typography Selection</li>
+                                <li class="flex items-start gap-3 text-sm text-zinc-300"><i class="ph-fill ph-check-circle text-orange-500 text-lg flex-shrink-0"></i> Basic Social Media Kit</li>
+                            </ul>
+                            <button onclick="navigate('contact')" class="w-full py-4 rounded-xl font-bold text-sm transition-colors bg-zinc-800 text-white hover:bg-zinc-700">GET STARTED</button>
+                        </div>
+                        
+                        <!-- Growth -->
+                        <div class="reveal delay-100 relative p-8 rounded-2xl border flex flex-col h-full bg-zinc-900/50 border-orange-500 shadow-[0_0_30px_rgba(234,88,12,0.1)]">
+                            <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-orange-500 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest">Most Popular</div>
+                            <h3 class="text-2xl font-bold mb-2">GROWTH</h3>
+                            <p class="text-sm text-zinc-400 mb-8">For growing brands.</p>
+                            <div class="mb-8 pb-8 border-b border-zinc-800">
+                                <span class="text-3xl font-light tracking-tight">CUSTOM QUOTE</span>
+                            </div>
+                            <ul class="space-y-4 mb-8 flex-grow">
+                                <li class="flex items-start gap-3 text-sm text-zinc-300"><i class="ph-fill ph-check-circle text-orange-500 text-lg flex-shrink-0"></i> Full Brand Identity</li>
+                                <li class="flex items-start gap-3 text-sm text-zinc-300"><i class="ph-fill ph-check-circle text-orange-500 text-lg flex-shrink-0"></i> Social Media Graphics</li>
+                                <li class="flex items-start gap-3 text-sm text-zinc-300"><i class="ph-fill ph-check-circle text-orange-500 text-lg flex-shrink-0"></i> Promotional Content</li>
+                                <li class="flex items-start gap-3 text-sm text-zinc-300"><i class="ph-fill ph-check-circle text-orange-500 text-lg flex-shrink-0"></i> Marketing Visuals</li>
+                            </ul>
+                            <button onclick="navigate('contact')" class="w-full py-4 rounded-xl font-bold text-sm transition-colors bg-orange-500 text-white hover:bg-orange-600">BUILD MY BRAND</button>
+                        </div>
+
+                        <!-- Signature -->
+                        <div class="reveal delay-200 relative p-8 rounded-2xl border flex flex-col h-full bg-zinc-900/50 border-zinc-800">
+                            <h3 class="text-2xl font-bold mb-2">SIGNATURE</h3>
+                            <p class="text-sm text-zinc-400 mb-8">The complete creative solution.</p>
+                            <div class="mb-8 pb-8 border-b border-zinc-800">
+                                <span class="text-3xl font-light tracking-tight">CUSTOM QUOTE</span>
+                            </div>
+                            <ul class="space-y-4 mb-8 flex-grow">
+                                <li class="flex items-start gap-3 text-sm text-zinc-300"><i class="ph-fill ph-check-circle text-orange-500 text-lg flex-shrink-0"></i> Premium Branding</li>
+                                <li class="flex items-start gap-3 text-sm text-zinc-300"><i class="ph-fill ph-check-circle text-orange-500 text-lg flex-shrink-0"></i> Website Design</li>
+                                <li class="flex items-start gap-3 text-sm text-zinc-300"><i class="ph-fill ph-check-circle text-orange-500 text-lg flex-shrink-0"></i> Social Media Content</li>
+                                <li class="flex items-start gap-3 text-sm text-zinc-300"><i class="ph-fill ph-check-circle text-orange-500 text-lg flex-shrink-0"></i> Promotional Videos</li>
+                                <li class="flex items-start gap-3 text-sm text-zinc-300"><i class="ph-fill ph-check-circle text-orange-500 text-lg flex-shrink-0"></i> Campaign Visuals</li>
+                            </ul>
+                            <button onclick="navigate('contact')" class="w-full py-4 rounded-xl font-bold text-sm transition-colors bg-zinc-800 text-white hover:bg-zinc-700">LET'S BUILD</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Testimonials -->
+            <section class="py-24 bg-zinc-900 border-y border-zinc-800">
+                <div class="max-w-4xl mx-auto px-6 text-center">
+                    <div class="reveal">
+                        <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-8">HEAR FROM OUR CLIENTS</h2>
+                        <div class="p-12 border border-zinc-800 rounded-2xl bg-zinc-950">
+                            <p class="text-xl text-zinc-500 font-light italic">"Client stories coming soon."</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- ================= WORK PAGE ================= -->
+        <div id="page-work" class="page-section pt-32 pb-24 min-h-screen">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="reveal mb-16">
+                    <h1 class="text-5xl md:text-7xl font-black tracking-tighter mb-6">OUR WORK</h1>
+                    <p class="text-xl text-zinc-400 max-w-2xl font-light">
+                        Explore our portfolio of brand identities, digital experiences, and creative campaigns designed to make an impact.
+                    </p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-16" id="work-grid">
+                    <!-- Grid populated by JS -->
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= PROJECT DETAIL PAGE ================= -->
+        <div id="page-project-detail" class="page-section pt-32 pb-24 min-h-screen">
+            <!-- Populated dynamically by JS -->
+        </div>
+
+        <!-- ================= SERVICES PAGE ================= -->
+        <div id="page-services" class="page-section pt-32 pb-24 min-h-screen">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="reveal mb-20 text-center md:text-left">
+                    <h1 class="text-5xl md:text-7xl font-black tracking-tighter mb-6">OUR SERVICES</h1>
+                    <p class="text-xl text-zinc-400 max-w-2xl font-light">
+                        Comprehensive creative solutions tailored for modern brands. We combine strategic thinking with premium execution.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 gap-6" id="services-list">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= ABOUT PAGE ================= -->
+        <div id="page-about" class="page-section pt-32 pb-24 min-h-screen">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                    <div>
+                        <div class="reveal">
+                            <h1 class="text-5xl md:text-7xl font-black tracking-tighter mb-8 leading-[1.1]">
+                                BUILT FROM <span class="text-orange-500">PAPUA NEW GUINEA.</span> <br />
+                                CREATED FOR THE WORLD.
+                            </h1>
+                        </div>
+                        <div class="reveal delay-100 space-y-6 text-lg text-zinc-300 font-light leading-relaxed">
+                            <p>KALSTONE STUDIO is an independent creative studio built around a simple idea: great ideas deserve great visual expression.</p>
+                            <p>Based in Port Moresby, we draw inspiration from the rich, diverse cultural heritage of Papua New Guinea, blending it with modern, minimalist design principles to create brands that stand out on a global stage.</p>
+                            <p>We help businesses, entrepreneurs and brands transform their ideas into memorable identities, engaging content and powerful visual experiences. Whether you are a local startup or an international enterprise, our focus remains the same: delivering premium, impactful creative work.</p>
+                        </div>
+                        <div class="reveal delay-200 mt-12 grid grid-cols-2 gap-8 pt-12 border-t border-zinc-800">
+                            <div>
+                                <h4 class="text-4xl font-black mb-2 text-white">Global</h4>
+                                <p class="text-sm text-zinc-500 font-bold uppercase tracking-widest">Mindset</p>
+                            </div>
+                            <div>
+                                <h4 class="text-4xl font-black mb-2 text-white">Premium</h4>
+                                <p class="text-sm text-zinc-500 font-bold uppercase tracking-widest">Quality</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="reveal delay-300 relative">
+                        <div class="absolute inset-0 bg-orange-500/20 rounded-3xl blur-3xl -z-10"></div>
+                        <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&q=80&w=1200" alt="Creative Studio" class="w-full rounded-3xl object-cover aspect-[4/5] border border-zinc-800"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= CONTACT PAGE ================= -->
+        <div id="page-contact" class="page-section pt-32 pb-24 min-h-screen">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="grid grid-cols-1 lg:grid-cols-5 gap-16">
+                    <div class="lg:col-span-2">
+                        <div class="reveal">
+                            <h1 class="text-5xl md:text-6xl font-black tracking-tighter mb-6">LET'S CREATE SOMETHING POWERFUL.</h1>
+                            <p class="text-xl text-zinc-400 font-light mb-12">
+                                Fill out the form to request a quote or start a conversation about your next project.
+                            </p>
+                            
+                            <div class="space-y-8">
+                                <div>
+                                    <h4 class="text-xs font-bold tracking-widest text-zinc-500 uppercase mb-2">Email</h4>
+                                    <p class="text-lg text-white">erichkalanemomberger@gmail.com</p>
+                                </div>
+                                <div>
+                                    <h4 class="text-xs font-bold tracking-widest text-zinc-500 uppercase mb-2">Location</h4>
+                                    <p class="text-lg text-white">Port Moresby, Papua New Guinea<br/>Available for global projects.</p>
+                                </div>
+                                <div>
+                                    <h4 class="text-xs font-bold tracking-widest text-zinc-500 uppercase mb-2">Phone / WhatsApp</h4>
+                                    <p class="text-lg text-white">+675 8370 2151</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-3">
+                        <div class="reveal delay-200 bg-zinc-900 border border-zinc-800 rounded-3xl p-8 md:p-12">
+                            
+                            <!-- Success Message (Hidden initially) -->
+                            <div id="contact-success" class="hidden text-center py-16">
+                                <div class="w-20 h-20 bg-orange-500/20 text-orange-500 rounded-full flex items-center justify-center mx-auto mb-6 text-4xl">
+                                    <i class="ph-fill ph-check-circle"></i>
+                                </div>
+                                <h3 class="text-3xl font-bold mb-4">Request Sent!</h3>
+                                <p class="text-zinc-400">Thank you for reaching out. We will review your project details and get back to you within 48 hours.</p>
+                                <button onclick="resetForm()" class="mt-8 text-orange-500 font-bold hover:underline">Send another message</button>
+                            </div>
+
+                            <!-- Form -->
+                            <form id="contact-form" class="space-y-6" onsubmit="submitForm(event)">
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div class="space-y-2">
+                                        <label class="text-sm font-bold text-zinc-400">Name *</label>
+                                        <input required type="text" class="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-orange-500 transition-colors" placeholder="John Doe" />
+                                    </div>
+                                    <div class="space-y-2">
+                                        <label class="text-sm font-bold text-zinc-400">Email *</label>
+                                        <input required type="email" class="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-orange-500 transition-colors" placeholder="john@company.com" />
+                                    </div>
+                                </div>
+                                
+                                <div class="space-y-2">
+                                    <label class="text-sm font-bold text-zinc-400">Business / Brand Name</label>
+                                    <input type="text" class="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-orange-500 transition-colors" placeholder="Your Brand" />
+                                </div>
+
+                                <div class="space-y-2">
+                                    <label class="text-sm font-bold text-zinc-400">Service Required *</label>
+                                    <select required class="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-orange-500 transition-colors appearance-none">
+                                        <option value="" disabled selected>Select a service...</option>
+                                        <option>Brand Identity</option>
+                                        <option>Graphic Design</option>
+                                        <option>Website Design</option>
+                                        <option>Video & Motion</option>
+                                        <option>Social Media</option>
+                                        <option>Full Creative Package</option>
+                                    </select>
+                                </div>
+
+                                <div class="space-y-2">
+                                    <label class="text-sm font-bold text-zinc-400">Project Description *</label>
+                                    <textarea required rows="4" class="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-orange-500 transition-colors resize-none" placeholder="Tell us about your goals..."></textarea>
+                                </div>
+
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div class="space-y-2">
+                                        <label class="text-sm font-bold text-zinc-400">Budget Range</label>
+                                        <select class="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-orange-500 transition-colors appearance-none">
+                                            <option value="" disabled selected>Select budget...</option>
+                                            <option>Under $1k</option>
+                                            <option>$1k - $5k</option>
+                                            <option>$5k - $10k</option>
+                                            <option>$10k+</option>
+                                        </select>
+                                    </div>
+                                    <div class="space-y-2">
+                                        <label class="text-sm font-bold text-zinc-400">Desired Timeline</label>
+                                        <input type="text" class="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-orange-500 transition-colors" placeholder="e.g. 4 weeks" />
+                                    </div>
+                                </div>
+
+                                <button type="submit" id="submit-btn" class="w-full bg-orange-500 text-white font-bold py-4 rounded-xl hover:bg-orange-600 transition-colors mt-4">
+                                    SEND PROJECT REQUEST
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Global CTA -->
+    <section id="global-cta" class="py-32 bg-orange-500 text-white relative overflow-hidden transition-opacity duration-300">
+        <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=2000')] opacity-10 mix-blend-overlay bg-cover bg-center"></div>
+        <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
+            <div class="reveal">
+                <h2 class="text-5xl md:text-7xl font-black tracking-tighter mb-8 leading-tight">YOUR IDEA DESERVES TO BE SEEN.</h2>
+                <p class="text-xl md:text-2xl font-light mb-12 opacity-90 max-w-2xl mx-auto">
+                    Whether you're launching a business, building a brand or promoting a product, let's turn your idea into something people remember.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <button onclick="navigate('contact')" class="bg-zinc-950 text-white px-8 py-4 rounded-full font-bold hover:bg-white hover:text-black transition-colors">
+                        START A PROJECT
+                    </button>
+                    <button onclick="navigate('work')" class="bg-transparent border border-white/30 text-white px-8 py-4 rounded-full font-bold hover:bg-white/10 transition-colors">
+                        VIEW OUR WORK
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-zinc-900 bg-zinc-950 pt-20 pb-10 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+                <div class="md:col-span-2">
+                    <div class="text-2xl font-black tracking-tighter flex items-center gap-2 mb-4">
+                        <span class="w-6 h-6 bg-orange-500 rounded-sm block"></span>
+                        KALSTONE<span class="text-zinc-500 font-light">STUDIO</span>
+                    </div>
+                    <p class="text-xl font-light text-zinc-400 mb-6 max-w-md">
+                        IDEAS INTO IMPACT. Built from Papua New Guinea. Created for the world.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 rounded-full border border-zinc-800 flex items-center justify-center hover:bg-orange-500 hover:border-orange-500 transition-colors text-lg"><i class="ph ph-instagram-logo"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full border border-zinc-800 flex items-center justify-center hover:bg-orange-500 hover:border-orange-500 transition-colors text-lg"><i class="ph ph-facebook-logo"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full border border-zinc-800 flex items-center justify-center hover:bg-orange-500 hover:border-orange-500 transition-colors text-lg"><i class="ph ph-linkedin-logo"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-sm font-bold tracking-widest uppercase text-zinc-500 mb-6">Navigation</h4>
+                    <ul class="space-y-4">
+                        <li><button onclick="navigate('home')" class="text-zinc-300 hover:text-orange-500 transition-colors text-sm">Home</button></li>
+                        <li><button onclick="navigate('work')" class="text-zinc-300 hover:text-orange-500 transition-colors text-sm">Work</button></li>
+                        <li><button onclick="navigate('services')" class="text-zinc-300 hover:text-orange-500 transition-colors text-sm">Services</button></li>
+                        <li><button onclick="navigate('about')" class="text-zinc-300 hover:text-orange-500 transition-colors text-sm">About</button></li>
+                        <li><button onclick="navigate('contact')" class="text-zinc-300 hover:text-orange-500 transition-colors text-sm">Contact</button></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-sm font-bold tracking-widest uppercase text-zinc-500 mb-6">Contact</h4>
+                    <ul class="space-y-4 text-sm text-zinc-300">
+                        <li>Port Moresby, PNG</li>
+                        <li>erichkalanemomberger@gmail.com</li>
+                        <li>+675 8370 2151</li>
+                        <li>Global Client Services</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-zinc-900 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-zinc-600">
+                <p>© 2026 KALSTONE STUDIO. All rights reserved.</p>
+                <div class="flex gap-6">
+                    <a href="#" class="hover:text-white">Privacy Policy</a>
+                    <a href="#" class="hover:text-white">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Single File Logic -->
+    <script>
+        // Data Structures
+        const PORTFOLIO_PROJECTS = [
+            {
+                id: 'highlands-coffee',
+                title: 'Highlands Coffee Roasters',
+                category: 'Brand Identity',
+                image: 'https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&q=80&w=1200',
+                overview: 'A complete brand overhaul for a premium coffee roaster sourcing beans directly from the highlands of Papua New Guinea. The goal was to position them as a global luxury coffee brand while respecting their local roots.',
+                challenge: 'The previous branding felt outdated and disconnected from the high quality of the product. They needed an identity that could sit on shelves in high-end cafes worldwide.',
+                solution: 'We developed a rich, earthy color palette paired with elegant, modern typography. The new logo incorporates subtle topographic elements of the highlands, bringing a sense of place to the minimalist design.',
+                gallery: [
+                    'https://images.unsplash.com/photo-1497935586351-b67a49e012bf?auto=format&fit=crop&q=80&w=800',
+                    'https://images.unsplash.com/photo-1559525839-b184a4d698c7?auto=format&fit=crop&q=80&w=800'
+                ]
+            },
+            {
+                id: 'coastal-traders',
+                title: 'Coastal Traders Co-op',
+                category: 'Branding & Web',
+                image: 'https://images.unsplash.com/photo-1553531384-cc64ac80f931?auto=format&fit=crop&q=80&w=1200',
+                overview: 'Branding and digital presence for a cooperative of coastal artisans and traders, bringing traditional crafts to a modern e-commerce audience.',
+                challenge: 'Translating traditional cultural elements into a modern, digital-first brand identity without losing authenticity.',
+                solution: 'A clean, ocean-inspired visual system with bold typography and a customized e-commerce platform designed to tell the story behind every product.',
+                gallery: [
+                    'https://images.unsplash.com/photo-1544441893-675973e31985?auto=format&fit=crop&q=80&w=800',
+                    'https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&q=80&w=800'
+                ]
+            },
+            {
+                id: 'motu-mama',
+                title: 'Motu Mama Kitchen',
+                category: 'Brand Identity',
+                image: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&q=80&w=1200',
+                overview: 'Visual identity for a modern fusion restaurant celebrating traditional Motu flavors with contemporary culinary techniques.',
+                challenge: 'Creating a brand that appeals to both local food enthusiasts and international visitors looking for an authentic yet elevated dining experience.',
+                solution: 'Warm, inviting colors inspired by local spices and sunset coastal views, combined with a bespoke typographic logo that feels both welcoming and sophisticated.',
+                gallery: [
+                    'https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&q=80&w=800',
+                    'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&q=80&w=800'
+                ]
+            },
+            {
+                id: 'kalstone-media',
+                title: 'KALSTONE MEDIA',
+                category: 'Brand Identity',
+                image: 'https://images.unsplash.com/photo-1542038784456-1ea8e935640e?auto=format&fit=crop&q=80&w=1200',
+                overview: 'Internal brand identity project for our media and content creation arm, focusing on high-end video production and storytelling.',
+                challenge: 'Standing out in a crowded media landscape while maintaining visual connection to the parent studio brand.',
+                solution: 'A stark, high-contrast visual language relying heavily on typography, negative space, and a bold sunset orange accent to convey energy and impact.',
+                gallery: [
+                    'https://images.unsplash.com/photo-1516280440542-5b83b0a349f6?auto=format&fit=crop&q=80&w=800',
+                    'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&q=80&w=800'
+                ]
+            }
+        ];
+
+        const SERVICES = [
+            { icon: 'ph-pen-nib', title: 'Brand Identity', desc: 'Logo design, visual identity, color systems, typography and brand guidelines.' },
+            { icon: 'ph-camera', title: 'Graphic Design', desc: 'Marketing materials, posters, presentations and digital graphics.' },
+            { icon: 'ph-play-circle', title: 'Video & Motion', desc: 'Promotional videos, social media videos, reels, and motion graphics.' },
+            { icon: 'ph-device-mobile', title: 'Social Media Design', desc: 'Social media posts, campaign graphics, and branded visual systems.' },
+            { icon: 'ph-monitor', title: 'Website Design', desc: 'Modern, responsive websites designed around communication and conversion.' },
+            { icon: 'ph-sparkle', title: 'AI Creative Studio', desc: 'AI-assisted visual concepts, storytelling, and innovative image generation.' }
+        ];
+
+        // SPA Navigation Logic
+        function navigate(pageId) {
+            // Hide all pages
+            document.querySelectorAll('.page-section').forEach(el => {
+                el.classList.remove('active');
+            });
+            
+            // Show target page
+            const targetPage = document.getElementById(`page-${pageId}`);
+            if (targetPage) {
+                targetPage.classList.add('active');
+            }
+
+            // Global CTA Visibility (hidden on contact page)
+            const globalCta = document.getElementById('global-cta');
+            if(pageId === 'contact') {
+                globalCta.style.display = 'none';
+            } else {
+                globalCta.style.display = 'block';
+            }
+
+            // Update Nav Active States
+            document.querySelectorAll('.nav-btn, .mob-nav-btn').forEach(btn => {
+                if (btn.getAttribute('data-target') === pageId) {
+                    btn.classList.add('text-orange-500');
+                    btn.classList.remove('text-zinc-400', 'text-white');
+                } else {
+                    btn.classList.remove('text-orange-500');
+                    if(btn.classList.contains('nav-btn')) btn.classList.add('text-zinc-400');
+                    if(btn.classList.contains('mob-nav-btn')) btn.classList.add('text-white');
+                }
+            });
+
+            // Close mobile menu if open
+            const mobileMenu = document.getElementById('mobile-menu');
+            if(!mobileMenu.classList.contains('hidden')) {
+                toggleMobileMenu();
+            }
+
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            // Reset reveals for the new page
+            resetReveals();
+        }
+
+        function loadProjectDetail(projectId) {
+            const project = PORTFOLIO_PROJECTS.find(p => p.id === projectId);
+            if(!project) return;
+
+            const container = document.getElementById('page-project-detail');
+            
+            let galleryHTML = '';
+            project.gallery.forEach((img, i) => {
+                galleryHTML += `
+                <div class="reveal delay-${(i+1)*100} w-full rounded-2xl overflow-hidden bg-zinc-900 border border-zinc-800">
+                    <img src="${img}" alt="${project.title} Gallery" class="w-full h-auto object-cover" />
+                </div>`;
+            });
+
+            container.innerHTML = `
+                <div class="max-w-7xl mx-auto px-6">
+                    <div class="reveal">
+                        <button onclick="navigate('work')" class="flex items-center gap-2 text-sm font-bold text-zinc-400 hover:text-white mb-12 transition-colors uppercase tracking-widest">
+                            <i class="ph ph-arrow-left"></i> BACK TO PROJECTS
+                        </button>
+                    </div>
+                    <div class="reveal delay-100 mb-12">
+                        <span class="inline-block px-3 py-1 rounded-full border border-orange-500 text-orange-500 text-xs font-bold tracking-widest mb-6">CONCEPT PROJECT</span>
+                        <h1 class="text-4xl md:text-6xl font-black tracking-tight mb-6">${project.title}</h1>
+                        <p class="text-lg text-zinc-400 uppercase tracking-widest font-bold">${project.category}</p>
+                    </div>
+                </div>
+                <div class="reveal delay-200 w-full h-[50vh] md:h-[80vh] relative mb-24">
+                    <img src="${project.image}" alt="${project.title}" class="w-full h-full object-cover" />
+                </div>
+                <div class="max-w-4xl mx-auto px-6">
+                    <div class="space-y-24">
+                        <div class="reveal grid grid-cols-1 md:grid-cols-3 gap-8 border-t border-zinc-800 pt-12">
+                            <h3 class="text-sm font-bold tracking-widest text-zinc-500 uppercase">Project Overview</h3>
+                            <div class="md:col-span-2">
+                                <p class="text-xl text-zinc-300 leading-relaxed font-light">${project.overview}</p>
+                            </div>
+                        </div>
+                        <div class="reveal grid grid-cols-1 md:grid-cols-3 gap-8 border-t border-zinc-800 pt-12">
+                            <h3 class="text-sm font-bold tracking-widest text-zinc-500 uppercase">The Challenge</h3>
+                            <div class="md:col-span-2">
+                                <p class="text-xl text-zinc-300 leading-relaxed font-light">${project.challenge}</p>
+                            </div>
+                        </div>
+                        <div class="reveal grid grid-cols-1 md:grid-cols-3 gap-8 border-t border-zinc-800 pt-12 mb-24">
+                            <h3 class="text-sm font-bold tracking-widest text-zinc-500 uppercase">The Solution</h3>
+                            <div class="md:col-span-2">
+                                <p class="text-xl text-zinc-300 leading-relaxed font-light">${project.solution}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="max-w-7xl mx-auto px-6 mt-12 space-y-8">
+                    ${galleryHTML}
+                </div>
+            `;
+            
+            navigate('project-detail');
+        }
+
+        // Initialize Dynamic Content
+        function initContent() {
+            // Work Grid
+            const workGrid = document.getElementById('work-grid');
+            if(workGrid) {
+                let workHTML = '';
+                PORTFOLIO_PROJECTS.forEach((project, i) => {
+                    workHTML += `
+                    <div class="reveal delay-${(i%2)*100} group cursor-pointer block" onclick="loadProjectDetail('${project.id}')">
+                        <div class="relative overflow-hidden rounded-2xl aspect-[4/3] mb-6 bg-zinc-900">
+                            <img src="${project.image}" alt="${project.title}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"/>
+                            <div class="absolute top-4 right-4 bg-black/60 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold tracking-wide border border-white/10">Concept Project</div>
+                        </div>
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <p class="text-orange-500 text-sm font-bold mb-2 uppercase tracking-wider">${project.category}</p>
+                                <h3 class="text-3xl font-bold group-hover:text-orange-400 transition-colors">${project.title}</h3>
+                            </div>
+                            <div class="w-12 h-12 rounded-full bg-zinc-900 border border-zinc-800 flex items-center justify-center group-hover:bg-orange-500 group-hover:border-orange-500 group-hover:text-white transition-all text-xl">
+                                <i class="ph ph-arrow-up-right"></i>
+                            </div>
+                        </div>
+                    </div>`;
+                });
+                workGrid.innerHTML = workHTML;
+            }
+
+            // Services List
+            const servicesList = document.getElementById('services-list');
+            if(servicesList) {
+                let servicesHTML = '';
+                SERVICES.forEach((service, i) => {
+                    servicesHTML += `
+                    <div class="reveal delay-${(i%3)*100} bg-zinc-900/50 border border-zinc-800 p-8 md:p-12 rounded-3xl hover:border-orange-500/50 transition-colors group flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+                        <div class="flex flex-col md:flex-row items-start md:items-center gap-8">
+                            <div class="w-16 h-16 bg-zinc-950 rounded-2xl flex items-center justify-center text-orange-500 flex-shrink-0 group-hover:scale-110 transition-transform border border-zinc-800 text-3xl">
+                                <i class="ph ${service.icon}"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl md:text-3xl font-bold mb-3">${service.title}</h3>
+                                <p class="text-zinc-400 text-lg font-light leading-relaxed max-w-2xl">${service.desc}</p>
+                            </div>
+                        </div>
+                        <button onclick="navigate('contact')" class="whitespace-nowrap px-6 py-3 rounded-full border border-zinc-700 text-sm font-bold hover:bg-white hover:text-black hover:border-white transition-all">
+                            REQUEST SERVICE
+                        </button>
+                    </div>`;
+                });
+                servicesList.innerHTML = servicesHTML;
+            }
+        }
+
+        // Scroll Reveal Logic
+        function resetReveals() {
+            document.querySelectorAll('.reveal').forEach(el => {
+                el.classList.remove('active');
+            });
+            // Give browser a frame to paint removed class before adding back
+            setTimeout(initRevealObserver, 50); 
+        }
+
+        function initRevealObserver() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.reveal:not(.active)').forEach(el => {
+                observer.observe(el);
+            });
+        }
+
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                nav.classList.add('bg-zinc-950/90', 'backdrop-blur-md', 'border-b', 'border-zinc-800', 'py-4');
+                nav.classList.remove('bg-transparent', 'py-6');
+            } else {
+                nav.classList.remove('bg-zinc-950/90', 'backdrop-blur-md', 'border-b', 'border-zinc-800', 'py-4');
+                nav.classList.add('bg-transparent', 'py-6');
+            }
+        });
+
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const icon = document.querySelector('#mobile-menu-btn i');
+            
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+                setTimeout(() => menu.classList.remove('opacity-0'), 10);
+                icon.classList.remove('ph-list');
+                icon.classList.add('ph-x');
+                document.body.style.overflow = 'hidden'; // prevent scroll
+            } else {
+                menu.classList.add('opacity-0');
+                setTimeout(() => menu.classList.add('hidden'), 300);
+                icon.classList.remove('ph-x');
+                icon.classList.add('ph-list');
+                document.body.style.overflow = '';
+            }
+        }
+
+        // Interactive Before/After Slider
+        const sliderContainer = document.getElementById('ba-container');
+        const sliderForeground = document.getElementById('ba-foreground');
+        const sliderHandle = document.getElementById('ba-handle');
+
+        function moveSlider(e) {
+            if (!sliderContainer) return;
+            const rect = sliderContainer.getBoundingClientRect();
+            const x = (e.touches ? e.touches[0].clientX : e.clientX) - rect.left;
+            let percent = Math.max(0, Math.min(100, (x / rect.width) * 100));
+            
+            sliderForeground.style.clipPath = `polygon(0 0, ${percent}% 0, ${percent}% 100%, 0 100%)`;
+            sliderHandle.style.left = `${percent}%`;
+        }
+
+        if(sliderContainer) {
+            sliderContainer.addEventListener('mousemove', moveSlider);
+            sliderContainer.addEventListener('touchmove', moveSlider);
+        }
+
+        // Form Handling
+        function submitForm(e) {
+            e.preventDefault();
+            const btn = document.getElementById('submit-btn');
+            btn.innerHTML = 'SENDING...';
+            btn.classList.add('opacity-50');
+            btn.disabled = true;
+
+            // Simulate API Call
+            setTimeout(() => {
+                document.getElementById('contact-form').classList.add('hidden');
+                document.getElementById('contact-success').classList.remove('hidden');
+            }, 1500);
+        }
+
+        function resetForm() {
+            document.getElementById('contact-form').reset();
+            document.getElementById('contact-form').classList.remove('hidden');
+            document.getElementById('contact-success').classList.add('hidden');
+            
+            const btn = document.getElementById('submit-btn');
+            btn.innerHTML = 'SEND PROJECT REQUEST';
+            btn.classList.remove('opacity-50');
+            btn.disabled = false;
+        }
+
+        // Initialize App on Load
+        window.addEventListener('DOMContentLoaded', () => {
+            initContent();
+            initRevealObserver();
+            // Optional: Handle hash navigation on direct link (e.g., #contact)
+            if(window.location.hash) {
+                const page = window.location.hash.substring(1);
+                if(document.getElementById(`page-${page}`)) navigate(page);
+            }
+        });
+
+    </script>
+</body>
+</html>
